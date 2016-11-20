@@ -102,34 +102,34 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.album9,
                 R.drawable.album10};
 
-        Album a = new Album("True Romance", 13, covers[0]);
+        Album a = new Album("Beras Kencur", 2, covers[0]);
         albumList.add(a);
 
-        a = new Album("Xscpae", 8, covers[1]);
+        a = new Album("Cabe Puyang", 2, covers[1]);
         albumList.add(a);
 
-        a = new Album("Maroon 5", 11, covers[2]);
+        a = new Album("Kudu Laos", 9, covers[2]);
         albumList.add(a);
 
-        a = new Album("Born to Die", 12, covers[3]);
+        a = new Album("Kunyit", 2, covers[3]);
         albumList.add(a);
 
-        a = new Album("Honeymoon", 14, covers[4]);
+        a = new Album("Pahitan", 1, covers[4]);
         albumList.add(a);
 
-        a = new Album("I Need a Doctor", 1, covers[5]);
+        a = new Album("Kunci Suruh", 2, covers[5]);
         albumList.add(a);
 
-        a = new Album("Loud", 11, covers[6]);
+        a = new Album("Uyup-uyup", 9, covers[6]);
         albumList.add(a);
 
-        a = new Album("Legend", 14, covers[7]);
+        a = new Album("Sinom", 1, covers[7]);
         albumList.add(a);
 
-        a = new Album("Hello", 11, covers[8]);
+        a = new Album("Temulawak", 8, covers[8]);
         albumList.add(a);
 
-        a = new Album("Jamu Pepaya", 11, covers[9]);
+        a = new Album("Daun Pepaya", 5, covers[9]);
         albumList.add(a);
 
         adapter.notifyDataSetChanged();
