@@ -57,7 +57,7 @@ public class JamuAdapter extends RecyclerView.Adapter<JamuAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, count, bahan, cara, deskripsi;
-        public ImageView thumbnail, overflow;
+        public ImageView thumbnail;
 
         public MyViewHolder(View view) {
             super(view);
