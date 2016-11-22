@@ -21,18 +21,16 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements JamuAdapter.IJamuAdapter {
+public class PijatActivity extends AppCompatActivity {
 
-    public static final String JAMU = "jamu";
-    RecyclerView recyclerView;
-    JamuAdapter adapter;
-    List<Jamu> jamuList;
-
+    private RecyclerView recyclerView;
+    private PijatAdapter adapter;
+    private List<pijat> albumList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pijat);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -40,19 +38,19 @@ public class MainActivity extends AppCompatActivity implements JamuAdapter.IJamu
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        jamuList = new ArrayList<>();
-        adapter = new JamuAdapter(this, jamuList);
+        albumList = new ArrayList<>();
+        adapter = new PijatAdapter(this, albumList);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        recyclerView.addItemDecoration(new PijatActivity.GridSpacingItemDecoration(2, dpToPx(4), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
-        prepareJamu();
+        prepareAlbums();
 
         try {
-            Glide.with(this).load(R.drawable.cover).into((ImageView) findViewById(R.id.backdrop));
+            Glide.with(this).load(R.drawable.pijatcover).into((ImageView) findViewById(R.id.backdrop));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,11 +58,10 @@ public class MainActivity extends AppCompatActivity implements JamuAdapter.IJamu
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, PijatActivity.class);
+                Intent i = new Intent(PijatActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
-
     }
 
     /**
@@ -102,61 +99,24 @@ public class MainActivity extends AppCompatActivity implements JamuAdapter.IJamu
     /**
      * Adding few albums for testing
      */
-    private void prepareJamu() {
+    private void prepareAlbums() {
         int[] covers = new int[]{
-                R.drawable.jamu1,
-                R.drawable.jamu2,
-                R.drawable.jamu3,
-                R.drawable.jamu4,
-                R.drawable.jamu5,
-                R.drawable.jamu6,
-                R.drawable.jamu7,
-                R.drawable.jamu8,
-                R.drawable.jamu9,
-                R.drawable.jamu10};
+                R.drawable.jamu11,
+                R.drawable.jamu12,
+                R.drawable.jamu13,
+                R.drawable.jamu14};
 
-        Jamu a = new Jamu("Beras Kencur", 2, covers[0], "Dapat menghilangkan pegal-pegal pada tubuh dan " +
-                "sebagai tonikom atau penyegar saat habis bekerja",
-                "Dua bahan dasar pokok yang selalu dipakai, yaitu beras dan kencur.\n" +
-                        "Bahan-bahan lain yang biasa dicampurkan ke dalam racikan jamu beras kencur adalah\n" +
-                        "biji kedawung, rimpang jahe, biji kapulogo, buah asam, kayu keningar, kunir.\n" +
-                        "Sebagai pemanis digunakan gula merah dicampur gula putih.",
-                "");
-        jamuList.add(a);
+        pijat a = new pijat("Refleksi Kaki Kiri", 2, covers[0]);
+        albumList.add(a);
 
-        a = new Jamu("Cabe Puyang", 2, covers[1], "Menghilangkan cikalen, pegal, dan linu-linu di tubuh", "", "");
-        jamuList.add(a);
+        a = new pijat("Refleksi Kaki Kanan", 2, covers[1]);
+        albumList.add(a);
 
-        a = new Jamu("Kudu Laos", 9, covers[2], "Menurunkan tekanan darah,melancarkan peredaran darah," +
-                " menghangatkan badan, membuat perut terasa nyaman, menambah nafsu makan, melancarkan haid, dan menyegarkan badan",
-                "", "");
-        jamuList.add(a);
+        a = new pijat("Refleksi Punggung Tangan", 9, covers[2]);
+        albumList.add(a);
 
-        a = new Jamu("Kunyit", 2, covers[3], "Menyegarkan tubuh atau dapat membuat tubuh menjadi dingin", "", "");
-        jamuList.add(a);
-
-        a = new Jamu("Pahitan", 1, covers[4], "Untuk gatal-gatal dan kencing manis", "", "");
-        jamuList.add(a);
-
-        a = new Jamu("Kunci Suruh", 2, covers[5], "Mengobati keluhan keputihan (fluor albus)," +
-                "merapatkan bagian intim wanita (vagina), menghilangkan bau badan, " +
-                "mengecilkan rahim dan perut, serta dikatakan dapat menguatkan gigi", "", "");
-        jamuList.add(a);
-
-        a = new Jamu("Uyup-uyup", 9, covers[6], "Meningkatkan produksi air susu ibu pada ibu yang sedang menyusui",
-                "", "");
-        jamuList.add(a);
-
-        a = new Jamu("Sinom", 1, covers[7], "Menambah nafsu makan, mengatasi peradangan lambung " +
-                "atau maag dan mengatasi masalah keputihan pada wanita", "", "");
-        jamuList.add(a);
-
-        a = new Jamu("Temulawak", 8, covers[8], "Mengatasi gangguan pencernaan, " +
-                "meringankan osteoarthritis dan mengatasi kanker", "", "");
-        jamuList.add(a);
-
-        a = new Jamu("Daun Pepaya", 5, covers[9], "Mencegah sekaligus menyembuhkan penyakit malaria", "", "");
-        jamuList.add(a);
+        a = new pijat("Refleksi Telapak Tangan", 2, covers[3]);
+        albumList.add(a);
 
         adapter.notifyDataSetChanged();
     }
@@ -167,13 +127,6 @@ public class MainActivity extends AppCompatActivity implements JamuAdapter.IJamu
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
-    }
-
-    @Override
-    public void doClick(int pos) {
-        Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra(JAMU, jamuList.get(pos));
-        startActivity(intent);
     }
 
     /**
@@ -212,5 +165,6 @@ public class MainActivity extends AppCompatActivity implements JamuAdapter.IJamu
                 }
             }
         }
+
     }
 }

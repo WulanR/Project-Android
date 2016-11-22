@@ -45,17 +45,17 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/jamu_tradisional"
+                        android:id="@+id/love_music"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/backdrop_title"
+                        android:text="Pijat Refleksi"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/backdrop_title" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/backdrop_subtitle"
+                        android:text="Jenis - jenis Pijat Refleksi"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/backdrop_subtitle" />
 
@@ -73,16 +73,18 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_pijat" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="center_vertical|left"
         android:layout_margin="@dimen/fab_margin"
         android:tint="@android:color/white"
-        app:srcCompat="@drawable/ic_arrow_forward_black_24dp" />
+        app:layout_anchor="@+id/appbar"
+        app:layout_anchorGravity="bottom|right"
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -29,6 +29,10 @@
         <activity
             android:name=".DetailActivity"
             android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PijatActivity"
+            android:label="@string/title_activity_pijat"
             android:theme="@style/AppTheme"></activity>
     </application>
 
