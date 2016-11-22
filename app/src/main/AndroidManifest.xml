@@ -8,20 +8,17 @@
         android:label="Part1"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
-            android:name="id.sch.smktelkom_mlg.project.xirpl406152433.part1.SplashScreen"
+            android:name=".SplashScreen"
             android:label="Part1"
             android:noHistory="true"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,5 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme"></activity>
     </application>
+
 </manifest>

@@ -16,36 +16,36 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-
 import java.util.List;
 
-public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHolder> {
+public class JamuAdapter extends RecyclerView.Adapter<JamuAdapter.MyViewHolder> {
 
-    private Context mContext;
-    private List<Album> albumList;
+    Context mContext;
+    List<Jamu> jamuList;
+    IJamuAdapter mIJamuAdapter;
 
-    public AlbumsAdapter(Context mContext, List<Album> albumList) {
-        this.mContext = mContext;
-        this.albumList = albumList;
+    public JamuAdapter(Context mContext, List<Jamu> jamuList) {
+        mIJamuAdapter = (IJamuAdapter) mContext;
+        this.jamuList = jamuList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.album_card, parent, false);
+                .inflate(R.layout.jamu_card, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Album album = albumList.get(position);
-        holder.title.setText(album.getName());
-        holder.count.setText(album.getNumOfSongs() + " bahan dasar pokok");
+        Jamu jamu = jamuList.get(position);
+        holder.thumbnail.setImageResource(jamu.thumbnail);
+        holder.title.setText(jamu.getName());
+        holder.count.setText(jamu.getBahanpokok() + " bahan dasar pokok");
 
-        // loading album cover using Glide library
-        Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
+        // loading jamu cover using Glide library
+        //Glide.with(mContext).load(jamu.getThumbnail()).into(holder.thumbnail);
 
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,18 +62,22 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
         // inflate menu
         PopupMenu popup = new PopupMenu(mContext, view);
         MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_album, popup.getMenu());
+        inflater.inflate(R.menu.menu_jamu, popup.getMenu());
         popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
         popup.show();
     }
 
     @Override
     public int getItemCount() {
-        return albumList.size();
+        return jamuList.size();
+    }
+
+    public interface IJamuAdapter {
+        void doClick(int pos);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, count;
+        public TextView title, count, bahan, cara, deskripsi;
         public ImageView thumbnail, overflow;
 
         public MyViewHolder(View view) {
@@ -82,6 +86,16 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
             count = (TextView) view.findViewById(R.id.count);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             overflow = (ImageView) view.findViewById(R.id.overflow);
+            bahan = (TextView) view.findViewById(R.id.jamu_bahan);
+            cara = (TextView) view.findViewById(R.id.jamu_cara);
+            deskripsi = (TextView) view.findViewById(R.id.jamu_deskripsi);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mIJamuAdapter.doClick(getAdapterPosition());
+                }
+            });
         }
     }
 
@@ -99,7 +113,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
                 case R.id.action_add_favourite:
                     Toast.makeText(mContext, "Ditambahkan Favorit", Toast.LENGTH_SHORT).show();
                     return true;
-                case R.id.action_play_next:
+                case R.id.action_read_later:
                     Toast.makeText(mContext, "Baca nanti", Toast.LENGTH_SHORT).show();
                     return true;
                 default:

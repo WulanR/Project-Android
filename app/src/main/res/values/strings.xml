@@ -2,7 +2,8 @@
     <string name="app_name">Mbok Jamu</string>
     <string name="action_settings">Settings</string>
     <string name="action_add_favourite">Tambah Favorit</string>
-    <string name="action_play_next">Baca nanti</string>
+    <string name="action_read_later">Baca nanti</string>
     <string name="backdrop_title">JAMU TRADISIONAL</string>
     <string name="backdrop_subtitle">10 Jamu Paling Top</string>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>
