@@ -24,6 +24,12 @@ titik-titik pijat refleksi
 ![Image] (https://github.com/WulanR/Project-Android/blob/master/7.JPG)
 ![Image] (https://github.com/WulanR/Project-Android/blob/master/8.JPG)
 
+#Video Aplikasi
+[![ScreenShot](https://github.com/WulanR/Project-Android/blob/master/1.JPG)](https://www.youtube.com/watch?v=bgLQnVffFsM)
+
+#Link APK
+[Mbok Jamu](http://github.com)
+
 #Hasil karya
 Nama : Antonius Anugrah Deni Dewanta <br>
 No.Absen : 06 <br>
